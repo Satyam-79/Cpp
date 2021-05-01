@@ -1,13 +1,18 @@
 #include <iostream>
 #include <math.h>
-usinng namespace std;
+using namespace std;
 
 int main()
 {
     float r;
     double a, c;
     cout << "enter radius : ";
-    cin >>
+    cin >> r;
+    c = 2 * 3.14 * r;
+    a = c * r;
+    cout.precision(5);
+    cout << "Area = " << a << endl
+         << "Circumference = " << c << endl;
 
-        return 0;
+    return 0;
 }
