@@ -12,6 +12,7 @@ int main()
         {
             number = number / 2;
             // cout << number << " ";  trying
+            
             if (number > 2 && (number % 2) != 0)
             {
                 cout << "Number is not a power of 2";
