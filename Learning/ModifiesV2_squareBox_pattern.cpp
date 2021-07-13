@@ -7,11 +7,12 @@ int main()
     cin >> num;
     for (int i = 1; i <= num; i++)
     {
+        // cout << "\n i= " << i;
         if (i == 1)
         {
             for (int j = 1; j <= num; j++)
             {
-                if (j == i)
+                if (j == i || j == num)
                 {
                     cout << "$ ";
                 }
@@ -24,9 +25,11 @@ int main()
         if (i != 1 && i != num)
         {
             cout << "* ";
-            for (int k = 1; k <= num - 2; k++)
+            for (int k = 0; k < num - 2; k++)
             {
-                if (k == i - 1)
+                // cout << "\n k= " << k;
+
+                if (k == i - 2 || k == num - i - 1)
                 {
                     cout << "$ ";
                 }
@@ -40,9 +43,9 @@ int main()
         {
             for (int l = 1; l <= num; l++)
             {
-                if (l == i)
+                if (l == i || l == 1)
                 {
-                    cout << "$";
+                    cout << "$ ";
                 }
 
                 else
