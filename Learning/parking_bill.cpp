@@ -4,7 +4,7 @@ int main()
 {
     char vehicle, temp;
     int hour1, minute1, hour2, minute2, hour, minute, charges;
-    cout << "Enter the type of vehicle 'c' - car ; 'b' - bus/truck ; 's' - two wheeler : ";
+    cout << "\nEnter the type of vehicle 'c' - car ; 'b' - bus/truck ; 's' - two wheeler : ";
     cin >> vehicle;
     // cout << "Enter the entering time of vehicle in HH : ";
     // cin >> hour1;
