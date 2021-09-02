@@ -18,7 +18,8 @@ int main()
     }
 
     str[i] = '\0';
-    cout.write(str, 10);
+    // cout.write(str, 10);
+    puts(str);
 
     return 0;
 }
