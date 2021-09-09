@@ -11,6 +11,7 @@ void input(int arr[x][y], int a, int b)
         {
             cin >> arr[i][j];
         }
+        cin.ignore(20, '\n');
     }
     for (int i = 0; i < x; i++)
     {
@@ -42,14 +43,19 @@ int main()
 {
     int matrix[x][y], m, n, row_loc, col_loc, value = 0, p, q;
     cout << "\n Enter number of Rows and Columns(max: " << x << " X " << y << " ) : ";
+
     cin >> m >> n;
+    cin.ignore(20, '\n');
+
     input(matrix, m, n);
     if (m != x && n != y)
     {
         cout << "\nEnter the location of insertion of element.\nEnter the row number : ";
         cin >> row_loc;
+        cin.ignore(20, '\n');
         cout << "Enter the column number : ";
         cin >> col_loc;
+        cin.ignore(20, '\n');
         cout << "Enter the value of element : ";
         cin >> value;
         if (col_loc > n)
@@ -67,6 +73,6 @@ int main()
         }
     }
 
-    output(matrix, row_loc < m ? m + 1 : row_loc, col_loc < n ? n + 1 : col_loc);
+    output(matrix, row_loc < m ? m + 1 : row_loc + 1, col_loc < n ? n + 1 : col_loc + 1);
     return 0;
 }
