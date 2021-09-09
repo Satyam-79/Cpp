@@ -73,6 +73,6 @@ int main()
         }
     }
 
-    output(matrix, row_loc < m ? m + 1 : row_loc + 1, col_loc < n ? n + 1 : col_loc + 1);
+    output(matrix, row_loc < m + 1 ? m : row_loc, col_loc < n ? n + 1 : col_loc);
     return 0;
 }
