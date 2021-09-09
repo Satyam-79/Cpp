@@ -5,6 +5,7 @@ int main()
 {
     char word[20], temp = 0;
     int i = 0, n = 0;
+    cout << "\nEnter the Word : ";
     cin.getline(word, 20);
     n = strlen(word);
     for (i = 0; i < n; i++)
