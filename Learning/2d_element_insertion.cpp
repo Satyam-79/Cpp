@@ -58,14 +58,15 @@ int main()
         }
         else if (col_loc <= n)
         {
-            for (int j = n; j > col_loc; j--)
+            for (int j = n; j >= col_loc; j--)
             {
-                matrix[row_loc - 1][j + 1] = matrix[row_loc - 1][j];
+                matrix[row_loc - 1][j] = matrix[row_loc - 1][j - 1];
+                // cout << row_loc - 1 << j ;
             }
             matrix[row_loc - 1][col_loc - 1] = value;
         }
     }
 
-    output(matrix, m + 1, n + 2);
+    output(matrix, row_loc < m ? m + 1 : row_loc, col_loc < n ? n + 1 : col_loc);
     return 0;
 }
