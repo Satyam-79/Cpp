@@ -21,7 +21,7 @@ int main()
 
     return 0;
 }
-partition(int a[], int beg, int end)
+int partition(int a[], int beg, int end)
 {
     int left, right, temp, loc, flag = 0;
     loc = left = beg;
