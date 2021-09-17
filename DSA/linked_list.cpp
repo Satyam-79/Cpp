@@ -56,8 +56,24 @@ bool search(node *head, int search)
     }
     return false;
 }
-void deletion(node *head, int var)
+void deleteAtHead(node *&head)
 {
+    node *toDelete = head;
+    head = head->link;
+    delete toDelete;
+}
+void deletion(node *&head, int var)
+{
+    if (head == NULL)
+    {
+        return;
+    }
+    else if (head->link == NULL)
+    {
+        deleteAtHead(head);
+        return;
+    }
+
     node *temp = head;
     while (temp->link->data != var)
     {
@@ -70,19 +86,21 @@ void deletion(node *head, int var)
 int main()
 {
     node *head = NULL;
-    insertAtEnd(head, 1);
+    insertAtEnd(head, 3);
     insertAtEnd(head, 2);
     insertAtEnd(head, 3);
     display(head);
     cout << endl;
-    insertAtHead(head, 4);
+    // insertAtHead(head, 4);
     display(head);
     if (search(head, 3))
         cout << "\nvalue exists" << endl;
     else
         cout << "\nvalue doesn't exists" << endl;
-
-    deletion(head, 2);
+    deletion(head, 3);
     display(head);
+    deleteAtHead(head);
+    display(head);
+
     return 0;
 }
