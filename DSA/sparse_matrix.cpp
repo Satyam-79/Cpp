@@ -1,36 +1,57 @@
 #include <iostream>
 using namespace std;
-class rowNode
+class Node
 {
 public:
-    int rowNo;
+    int position;
+    Node *link;
+    Node(int pos)
+    {
+        position = pos;
+        link = NULL;
+    }
+};
+class rowNode : Node
+{
+public:
     rowNode *rLink;
-    rowNode *cLink;
-    rowNode(int row)
+
+    rowNode(int pos)
+        : Node(pos)
     {
-        rowNo = row;
         rLink = NULL;
-        cLink = NULL;
     }
 };
-class colNode
+class colNode : Node
 {
 public:
-    int colNo;
     int data;
-    colNode *cLink;
-    colNode(int column)
+
+    colNode(int pos, int val)
+        : Node(pos)
     {
-        colNo = column;
-        cLink = NULL;
+        data = val;
     }
 };
-void cols(colNode *&col, int colNum, int val)
+void cols(colNode *&head2, int colNum, int val)
 {
-    int num;
-    cout << "\nEnter the row Number: ";
-    cin >> num;
-    rowNode *n = new rowNode(num);
+    colNode *n = new colNode(colNum, val);
+    if (head2 == NULL)
+    {
+        head2 = n;
+        return;
+    }
+    colNode *temp = head2;
+
+    while (temp->link != NULL)
+    {
+        temp = temp->link;
+    }
+    temp->link = n;
+}
+void Rows(rowNode *&head, int rowNum)
+{
+    rowNode *n = new rowNode(rowNum);
     if (head == NULL)
     {
         head = n;
@@ -44,36 +65,54 @@ void cols(colNode *&col, int colNum, int val)
     }
     temp->rLink = n;
 }
-void Rows(rowNode *&head, int rowNum, int colNo)
+void link(rowNode *&head, colNode *&head2)
 {
-    int num;
-    cout << "\nEnter the row Number: ";
-    cin >> num;
-    rowNode *n = new rowNode(num);
-    if (head == NULL)
+    if (head->rLink == NULL)
     {
-        head = n;
-        return;
+        head->link = head2;
     }
     rowNode *temp = head;
-
     while (temp->rLink != NULL)
     {
         temp = temp->rLink;
     }
-    temp->rLink = n;
+    temp->rLink = head2;
 }
 int main()
 {
-    int row, col, nonZero;
+    int row, col, nonZero, count = 0;
     cout << "\nEnter number of rows: ";
     cin >> row;
     cout << "\nEnter number of columns: ";
     cin >> col;
     cout << "\nEnter number of Non-Zero elements: ";
     cin >> nonZero;
-    rowNode *head;
-    Rows(head, row, col);
+    rowNode *head = NULL;
+    int num;
+    int cNum;
+    int val;
+
+    while (count <= nonZero)
+    {
+        cout << "\nEnter row number: ";
+        cin >> num;
+        Rows(head, num);
+        colNode *head2 = NULL;
+        while (count <= nonZero)
+        {
+            cout << "\nEnter column number: ";
+
+            cin >> cNum;
+            cout << "\nEnter value: ";
+
+            cin >> val;
+            cols(head2, cNum, val);
+            count++;
+        }
+        link(head, head2);
+
+        cin >> num;
+    }
 
     return 0;
 }
