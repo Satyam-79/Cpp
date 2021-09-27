@@ -11,7 +11,7 @@ public:
         link = NULL;
     }
 };
-class rowNode : Node
+class rowNode : public Node
 {
 public:
     rowNode *rLink;
@@ -22,7 +22,7 @@ public:
         rLink = NULL;
     }
 };
-class colNode : Node
+class colNode : public Node
 {
 public:
     int data;
@@ -76,7 +76,7 @@ void link(rowNode *&head, colNode *&head2)
     {
         temp = temp->rLink;
     }
-    temp->rLink = head2;
+    temp->rLink = &head2;
 }
 int main()
 {
