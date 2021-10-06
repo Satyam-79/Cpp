@@ -1,3 +1,4 @@
+// sparse matrix linked list
 #include <iostream>
 using namespace std;
 #define x 4
@@ -33,7 +34,7 @@ public:
 
 void cols(colNode *&head2, int val, int colNum)
 {
-    colNode *n = new colNode(colNum, val + 1);
+    colNode *n = new colNode(colNum + 1, val);
     if (head2 == NULL)
     {
         head2 = n;
@@ -89,7 +90,7 @@ void print(rowNode *head)
     rowNode *temp1 = head;
     while (temp1 != NULL)
     {
-        colNode *temp = head->cLink;
+        colNode *temp = temp1->cLink;
         cout << "Row No : " << temp1->rowNo << endl;
         while (temp != NULL)
         {
