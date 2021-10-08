@@ -80,6 +80,7 @@ bool IsSafe(int grid[N][N], int row, int col, int num)
 }
 void PrintGrid(int grid[N][N])
 {
+    cout << "\nSolved sudoku : " << endl;
     for (int row = 0; row < N; row++)
     {
         for (int col = 0; col < N; col++)

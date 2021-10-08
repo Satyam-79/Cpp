@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time.h>
 using namespace std;
 const int x = 11;
 const int y = 11;
@@ -6,12 +7,14 @@ void input(int arr[x][y], int a, int b)
 {
     for (int i = 0; i < a; i++)
     {
-        cout << "\n Enter the values of row " << i + 1 << " : ";
+        srand(time(0));
+        // cout << "\n Enter the values of row " << i + 1 << " : ";
         for (int j = 0; j < b; j++)
         {
-            cin >> arr[i][j];
+            // cin >> arr[i][j];
+            arr[i][j] = (rand() * (i + 1) * (j + 1) % 100);
         }
-        cin.ignore(20, '\n');
+        // cin.ignore(20, '\n');
     }
 }
 void output(int arr[x][y], int a, int b)
@@ -27,13 +30,16 @@ void output(int arr[x][y], int a, int b)
 }
 int main()
 {
-    int matrix[x][y] = {0}, m, n, row_loc, col_loc, value = 0, p, q;
+    int matrix[x][y] = {0}, m, n, row_loc, col_loc, value;
     cout << "\n Enter number of Rows and Columns(max: " << x - 1 << " X " << y - 1 << " ) : ";
 
     cin >> m >> n;
     cin.ignore(20, '\n');
 
     input(matrix, m, n);
+    cout << "\nBefore Insertion" << endl;
+    output(matrix, m, n);
+
     if (m != x && n != y)
     {
         cout << "\nEnter the location of insertion of element.\nEnter the row number : ";
@@ -58,7 +64,7 @@ int main()
             matrix[row_loc - 1][col_loc - 1] = value;
         }
     }
-
+    cout << "\nAfter Insertion" << endl;
     output(matrix, row_loc < m + 1 ? m : row_loc, col_loc < n ? n + 1 : col_loc);
     return 0;
 }
