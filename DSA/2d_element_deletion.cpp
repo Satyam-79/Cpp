@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
-const int x = 10;
-const int y = 10;
+const int x = 11;
+const int y = 11;
 void input(int arr[x][y], int a, int b)
 {
     for (int i = 0; i < a; i++)
@@ -12,20 +12,6 @@ void input(int arr[x][y], int a, int b)
             cin >> arr[i][j];
         }
         cin.ignore(20, '\n');
-    }
-    for (int i = 0; i < x; i++)
-    {
-        for (int j = b; j < y; j++)
-        {
-            arr[i][j] = 0;
-        }
-        if (i >= a)
-        {
-            for (int j = 0; j < b; j++)
-            {
-                arr[i][j] = 0;
-            }
-        }
     }
 }
 void output(int arr[x][y], int a, int b)
@@ -41,8 +27,8 @@ void output(int arr[x][y], int a, int b)
 }
 int main()
 {
-    int matrix[x][y], m, n, row_loc, col_loc, value = 0, p, q;
-    cout << "\n Enter number of Rows and Columns(max: " << x << " X " << y << " ) : ";
+    int matrix[x][y] = {0}, m, n, row_loc, col_loc, value = 0, p, q;
+    cout << "\n Enter number of Rows and Columns(max: " << x - 1 << " X " << y - 1 << " ) : ";
 
     cin >> m >> n;
     cin.ignore(20, '\n');
@@ -56,23 +42,21 @@ int main()
         cout << "Enter the column number : ";
         cin >> col_loc;
 
-        if (col_loc > n || row_loc > m)
+        if (col_loc > n || row_loc > m || col_loc == 0 || row_loc == 0)
         {
             cout << "\nEntered location out of Row or column.";
         }
-        else if (col_loc <= n && row_loc <= m)
+        else
         {
-            for (int j = n; j >= col_loc; j--)
+            for (int j = col_loc - 1; j < n; j++)
             {
-                matrix[row_loc - 1][j - 1] = matrix[row_loc - 1][j];
-                // cout << row_loc - 1 << j ;
+                matrix[row_loc - 1][j] = matrix[row_loc - 1][j + 1];
             }
-            matrix[row_loc - 1][col_loc - 1] = 0;
+            matrix[row_loc - 1][n - 1] = 0;
+            cout << "\nAfter Deletion : " << endl;
             output(matrix, m, n);
         }
     }
 
-    // output(matrix, row_loc < m + 1 ? m : row_loc, col_loc < n ? n + 1 : col_loc);
-    // output(matrix, m, n);
     return 0;
 }

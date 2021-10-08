@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
-const int x = 10;
-const int y = 10;
+const int x = 11;
+const int y = 11;
 void input(int arr[x][y], int a, int b)
 {
     for (int i = 0; i < a; i++)
@@ -12,20 +12,6 @@ void input(int arr[x][y], int a, int b)
             cin >> arr[i][j];
         }
         cin.ignore(20, '\n');
-    }
-    for (int i = 0; i < x; i++)
-    {
-        for (int j = b; j < y; j++)
-        {
-            arr[i][j] = 0;
-        }
-        if (i >= a)
-        {
-            for (int j = 0; j < b; j++)
-            {
-                arr[i][j] = 0;
-            }
-        }
     }
 }
 void output(int arr[x][y], int a, int b)
@@ -41,36 +27,34 @@ void output(int arr[x][y], int a, int b)
 }
 int main()
 {
-    int matrix[x][y], transpose_matrix[y][x], m, n, row_loc, col_loc, value = 0, p, flag = 0, q;
-    cout << "\n Enter number of Rows and Columns(max: " << x << " X " << y << " ) : ";
+    int matrix[x][y] = {0}, m, n, row_loc, col_loc, value = 0, p, flag = 0, q;
+    cout << "\n Enter number of Rows and Columns(max: " << x - 1 << " X " << y - 1 << " ) : ";
 
     cin >> m >> n;
     cin.ignore(20, '\n');
 
     input(matrix, m, n);
 
-    cout << "\nEnter the element to be searched : " << endl;
+    cout << "\nTransversing of 2D-array :" << endl;
+    output(matrix, m, n);
+
+    cout << "\nEnter the element to be searched : ";
     cin >> value;
+    cout << endl;
+
     for (int i = 0; i < m; i++)
     {
         for (int j = 0; j < n; j++)
         {
             if (matrix[i][j] == value)
             {
-                flag = 1;
-                row_loc = i + 1;
-                col_loc = j + 1;
-                break;
+                ++flag;
+                cout << "Location of " << value << " is (" << i + 1 << " , " << j + 1 << ")" << endl;
             }
         }
-        if (flag == 1)
-            break;
     }
-    if (flag == 1)
-    {
-        cout << value << " is on (" << row_loc << " , " << col_loc << " ) place.";
-    }
-    else
+
+    if (flag == 0)
         cout << value << " does not exist in matrix.";
 
     return 0;
