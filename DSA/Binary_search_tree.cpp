@@ -1,4 +1,4 @@
-//  level order transversal binary tree
+//  Binary Search tree build
 #include <iostream>
 #include <queue>
 using namespace std;
