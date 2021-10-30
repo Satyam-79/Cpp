@@ -22,7 +22,7 @@ int search(int inOrder[], int start, int end, int curr)
     {
         if (inOrder[i] == curr)
         {
-            return i;
+            return i; //sss
         }
     }
     return -1;
