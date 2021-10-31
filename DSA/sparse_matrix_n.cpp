@@ -109,7 +109,7 @@ int main()
             {0, 0, 3, 0, 4},
             {0, 0, 5, 7, 0},
             {0, 0, 0, 0, 0},
-            {0, 2, 6, 0, 0}};
+            {0, 2, 0, 0, 0}};
     rowNode *head = NULL;
     makeSparse(Sparse_Matrix, head);
     print(head);
