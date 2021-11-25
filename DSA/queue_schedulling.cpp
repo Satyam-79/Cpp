@@ -60,22 +60,27 @@ public:
         return (front == NULL);
     }
 };
+void FCFS(queue q, int p)
+{
+    int turnAround = 0;
+    cout << "Processes  "
+         << " Burst time  "
+         << " Waiting time  "
+         << " Turn around time\n";
+    for (int i = 1; i <= p; i++)
+    {
+        turnAround += q.peek();
+        cout << i << "\t\t" << q.peek() << "\t\t" << turnAround - q.peek() << "\t\t" << turnAround << endl;
+        q.dequeue();
+    }
+}
 int main()
 {
+    int ProcessCount = 3;
     queue q;
-    q.enqueue(10);
-    q.enqueue(20);
-    q.enqueue(30);
-    q.enqueue(40);
-    cout << "Peek    \t" << q.peek() << endl;
-    q.dequeue();
-    cout << "Dequeue \t" << q.peek() << endl;
-    q.dequeue();
-    cout << "Dequeue \t" << q.peek() << endl;
-    q.dequeue();
-    cout << "Dequeue \t" << q.peek() << endl;
-    q.dequeue();
-    cout << "Is Empty\t" << q.empty() << endl;
-
+    q.enqueue(24);
+    q.enqueue(3);
+    q.enqueue(3);
+    FCFS(q, ProcessCount);
     return 0;
 }
