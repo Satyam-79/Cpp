@@ -1,4 +1,4 @@
-// Binary Tree postorder preorder inorder Post Order In Order Pre Order
+// Binary Tree print postorder preorder inOrder Post Order In Order Pre Order
 #include <iostream>
 using namespace std;
 class node
@@ -16,7 +16,7 @@ public:
         left = NULL;
     }
 };
-void preorder(node *&a)
+void preorder(node *a)
 {
     if (a == NULL)
     {
@@ -27,7 +27,7 @@ void preorder(node *&a)
     preorder(a->left);
     preorder(a->right);
 }
-void inOrder(node *&a)
+void inOrder(node *a)
 {
     if (a == NULL)
     {
@@ -37,7 +37,7 @@ void inOrder(node *&a)
     cout << a->data << "\t";
     inOrder(a->right);
 }
-void postOrder(node *&a)
+void postOrder(node *a)
 {
     if (a == NULL)
     {

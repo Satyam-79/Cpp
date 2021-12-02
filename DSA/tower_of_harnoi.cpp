@@ -1,16 +1,16 @@
 #include <iostream>
 using namespace std;
 
-void towerOfHanoi(int n, char from_rod, char to_rod, char aux_rod)
+void towerOfHanoi(int n, char rod_A, char rod_C, char rod_B)
 {
     if (n == 1)
     {
-        cout << "Move disk 1 from rod " << from_rod << " to rod " << to_rod << endl;
+        cout << "Move disk 1 from rod " << rod_A << " to rod " << rod_C << endl;
         return;
     }
-    towerOfHanoi(n - 1, from_rod, aux_rod, to_rod);
-    cout << "Move disk " << n << " from rod " << from_rod << " to rod " << to_rod << endl;
-    towerOfHanoi(n - 1, aux_rod, to_rod, from_rod);
+    towerOfHanoi(n - 1, rod_A, rod_B, rod_C);
+    cout << "Move disk " << n << " from rod " << rod_A << " to rod " << rod_C << endl;
+    towerOfHanoi(n - 1, rod_B, rod_C, rod_A);
 }
 int main()
 {
