@@ -1,3 +1,4 @@
+//  linked list all operation search insertion display deletion
 #include <iostream>
 using namespace std;
 class node

@@ -1,9 +1,11 @@
+// avl tree all operation rotation insertion deletion
 #include <iostream>
 using namespace std;
 class node
 {
 public:
     int data;
+    int height;
     node *right;
     node *left;
 
@@ -11,46 +13,47 @@ public:
     node(int val)
     {
         data = val;
+        height = 0;
         right = NULL;
         left = NULL;
     }
 };
-void MakeBST(node *&root, int value)
+int height(node *N)
+{
+    if (N == NULL)
+    {
+        return 0;
+    }
+    return N->height;
+}
+int max(int a, int b)
+{
+    return (a > b)? a : b;
+}
+
+node *MakeBST(node *&root, int value)
 {
     node *temp = root;
-    node *a = new node(value);
 
     if (root == NULL)
     {
-        root = a;
-        return;
+        return (new node(value));
     }
-    if (temp->data == value)
+    else if (temp->data < value)
     {
-        return;
-    }
-    if (temp->data > value && temp->left == NULL)
-    {
-        temp->left = a;
-        return;
-    }
-    if (temp->data < value && temp->right == NULL)
-    {
-        temp->right = a;
-        return;
-    }
-
-    if (temp->data < value)
-    {
-        MakeBST(temp->right, value);
+        temp->right = MakeBST(temp->right, value);
     }
     else if (temp->data > value)
     {
-        MakeBST(temp->left, value);
+        temp->left = MakeBST(temp->left, value);
     }
+    else
+        return root;
 }
-node *AVL(node *&root)
+node *AVL(node *&root,int key)
 {
+    return (MakeBST(root,key));
+    
 }
 void inOrder(node *a)
 {
@@ -65,14 +68,7 @@ void inOrder(node *a)
 int main()
 {
     node *root = NULL;
-    MakeBST(root, 1);
-    MakeBST(root, 3);
-    MakeBST(root, 4);
-    MakeBST(root, 2);
-    MakeBST(root, 7);
-    MakeBST(root, 2);
-    MakeBST(root, 9);
-    MakeBST(root, 5);
+
     inOrder(root);
 
     return 0;

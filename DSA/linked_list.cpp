@@ -12,6 +12,17 @@ public:
         link = NULL;
     }
 };
+int length(node *head1)
+{
+    int l = 0;
+    node *temp = head1;
+    while (temp != NULL)
+    {
+        l++;
+        temp = temp->link;
+    }
+    return l;
+}
 void insertAtEnd(node *&head, int val)
 {
     node *n = new node(val);
@@ -34,6 +45,31 @@ void insertAtHead(node *&head, int val)
     n->link = head;
     head = n;
 }
+void findInsert(node *&head, int val, int pos)
+{
+    if (pos > length(head))
+    {
+        cout << "position exceeded list length" << endl;
+        return;
+    }
+    if (head == NULL)
+    {
+        return;
+    }
+    node *n = new node(val);
+    node *temp = head->link;
+    node *temp2 = head;
+    int count = 0;
+    while (count != pos - 1)
+    {
+        count++;
+        temp = temp->link;
+        temp2 = temp2->link;
+    }
+    temp2->link = n;
+    n->link = temp;
+}
+
 void display(node *head)
 {
     node *temp = head;
@@ -89,16 +125,26 @@ int main()
     insertAtEnd(head, 1);
     insertAtEnd(head, 2);
     insertAtEnd(head, 3);
+    insertAtHead(head, 0);
+    insertAtEnd(head, 5);
+    insertAtEnd(head, 7);
+
     display(head);
-    cout << endl;
-    // insertAtHead(head, 4);
-    display(head);
+
     if (search(head, 3))
         cout << "\nvalue exists" << endl;
     else
         cout << "\nvalue doesn't exists" << endl;
+    cout << endl;
+
     deletion(head, 3);
     display(head);
+    cout << endl;
+
+    findInsert(head, 4, 2);
+    display(head);
+    cout << endl;
+
     deleteAtHead(head);
     display(head);
 
