@@ -125,25 +125,28 @@ int main()
     insertAtEnd(head, 1);
     insertAtEnd(head, 2);
     insertAtEnd(head, 3);
-    insertAtHead(head, 0);
+    insertAtHead(head, 0);      //Insertion at head
     insertAtEnd(head, 5);
     insertAtEnd(head, 7);
 
     display(head);
 
     if (search(head, 3))
-        cout << "\nvalue exists" << endl;
+        cout << "\nSearched value exists" << endl;
     else
-        cout << "\nvalue doesn't exists" << endl;
-    cout << endl;
+        cout << "\nSearched value doesn't exists" << endl;
+    cout << endl
+         << "Find Deletion" << endl;
 
     deletion(head, 3);
     display(head);
-    cout << endl;
+    cout << endl
+         << "Insert at position" << endl;
 
-    findInsert(head, 4, 2);
+    findInsert(head, 4, 2);                 //Insertion at postion
     display(head);
-    cout << endl;
+    cout << endl
+         << "Deletion at head" << endl;
 
     deleteAtHead(head);
     display(head);
