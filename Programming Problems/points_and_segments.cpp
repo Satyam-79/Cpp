@@ -53,6 +53,6 @@ int main()
     }
     cout << endl;
   }
-  //use fast_count_segments
+  // use fast_count_segments
   fast_count_segments(sets, points, n, m);
 }
