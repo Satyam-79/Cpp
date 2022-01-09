@@ -56,6 +56,7 @@ void fast_count_segments(vector<vector<long long>> sets, vector<long long> &poin
   long long ppp = 0;
   long long arr[n] = {-1};
   long long zz = ((2 * n) + m);
+
   while (it < zz)
   {
     // cout << " it " << it << endl;
@@ -134,30 +135,28 @@ int main()
     }
     sets[i][1] = j;
   }
+
   long long zz = ((2 * nn) + m);
+
   for (long long i = (2 * nn); i < zz; i++)
   {
     cin >> sets[i][0];
     sets[i][1] = -1;
     sets[i][2] = i - (2 * nn);
   }
-  sort(sets.begin(), sets.end(), colsort0);
-  // for (long long i = 0; i < points.size(); i++)
-  // {
-  //   cin >> points[i];
-  // }
-  // for (long long i = 0; i < ((2 * nn) + m); i++)
-  // {
-  //   for (long long j = 0; j < 3; j++)
-  //   {
-  //     cout << sets[i][j] << "\t";
-  //   }
-  //   cout << endl;
-  // }
-  // use fast_count_segments
-  fast_count_segments(sets, points, nn, m);
-  for (long long j = 0; j < m; j++)
+  stable_sort(sets.begin(), sets.end(), colsort0);
+  for (long long i = 0; i < ((2 * nn) + m); i++)
   {
-    cout << points[j] << " ";
+    for (long long j = 0; j < 3; j++)
+    {
+      cout << sets[i][j] << "\t";
+    }
+    cout << endl;
   }
+
+  // fast_count_segments(sets, points, nn, m);
+  // for (long long j = 0; j < m; j++)
+  // {
+  //   cout << points[j] << " ";
+  // }
 }
