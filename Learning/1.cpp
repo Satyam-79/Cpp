@@ -1,15 +1,12 @@
 #include <iostream>
-#include <math.h>
+#include <vector>
 using namespace std;
+
 int main()
 {
-    int pow1 = 1;
-    while (pow1 < 4)
-    {
+    int n;
+    cin >> n;
+    
 
-        float b = pow(10, pow1);
-        cout << b << endl;
-        pow1++;
-    }
     return 0;
 }
