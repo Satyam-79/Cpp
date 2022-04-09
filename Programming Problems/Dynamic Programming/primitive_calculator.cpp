@@ -3,7 +3,7 @@
 #include <algorithm>
 
 using namespace std;
-
+#define __INT_MAX__ INT32_MAX
 // vector<int> optimal_sequence(int n) {
 //   std::vector<int> sequence;
 //   while (n >= 1) {

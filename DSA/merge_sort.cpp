@@ -68,9 +68,7 @@ void merge_sort(int arr[], int beg, int end)
     {
         mid = (beg + end) / 2;
         merge_sort(arr, beg, mid);
-        cout << "\n  beg : " << beg << "\t  mid : " << mid << "\t end : " << end;
         merge_sort(arr, mid + 1, end);
-        cout << "\n--beg : " << beg << "\t--mid+1 : " << mid + 1 << "\t --end : " << end;
         merge(arr, beg, mid, end);
     }
 }
