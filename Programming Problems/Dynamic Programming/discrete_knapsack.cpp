@@ -35,14 +35,6 @@ long long optimal_weight(long long W, const vector<long long> &w)
       }
     }
   }
-  // for (size_t i = 0; i <= w.size(); ++i)
-  // {
-  //   for (size_t j = 0; j <= W; j++)
-  //   {
-  //     std::cout << bag[i][j] << " ";
-  //   }
-  //   std::cout << std::endl;
-  // }
 
   return bag[w.size()][W];
 }

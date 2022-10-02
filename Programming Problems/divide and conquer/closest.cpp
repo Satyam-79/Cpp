@@ -27,7 +27,7 @@ double distance(pair<long long, long long> p1, pair<long long, long long> p2)
 
 double nativeDist(vector<pair<long long, long long>> &points, long long beg, long long end)
 {
-  double min = __FLT_MAX__;
+  double min = FLT_MAX;
   for (size_t i = beg; i <= end; i++)
   {
     for (size_t j = i + 1; j <= end; j++)
@@ -42,7 +42,7 @@ double nativeDist(vector<pair<long long, long long>> &points, long long beg, lon
 }
 double minimal_distance(vector<pair<long long, long long>> &xSorted, vector<pair<long long, long long>> &ySorted, long long beg, long long end)
 {
-  double d1, d2, d, d_min = __FLT_MAX__;
+  double d1, d2, d, d_min = FLT_MAX;
   auto mid = (beg + end) / 2;
   pair<long long, long long> midPoint = xSorted[mid];
 
@@ -125,12 +125,6 @@ int main()
   sort(ySorted.begin(), ySorted.end(), [](pair<long long, long long> &a, pair<long long, long long> &b)
        { return a.second < b.second; });
 
-  // for (auto &&i : xSorted)
-  // {
-  //   cout << i.first << " " << i.second << endl;
-  // }
-  // auto d = points[0].first;
-  // cout << "ddd" << d;
   std::cout << std::fixed;
   std::cout << std::setprecision(5) << minimal_distance(xSorted, ySorted, 0, n - 1) << "\n";
 }

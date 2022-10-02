@@ -24,14 +24,11 @@ double get_optimal_value(long double &capacity, vector<vector<long double>> &val
     value += valWeight[0][0];
     valWeight.erase(it);
     it = valWeight.begin();
-    // cout << "\n ho v" << value << endl;
   }
   else if (capacity <= valWeight[0][1])
   {
     long double cost = valWeight[0][0] / valWeight[0][1];
     value += capacity * cost;
-    // capacity = 0;
-    // cout << "\nv" << value << endl;
     return value;
   }
 
@@ -43,9 +40,10 @@ int main()
   int n;
   long double capacity;
   double cost = 0;
+  // cout << "Enter no of items and capacity\n";
   cin >> n >> capacity;
   vector<vector<long double>> valWeight(n, vector<long double>(3));
-
+  // cout << "value and weight of each items\n";
   for (int i = 0; i < n; i++)
   {
     for (int j = 0; j < 2; j++)
@@ -59,8 +57,6 @@ int main()
   sort(valWeight.begin(), valWeight.end(), sortcol);
 
   double optimal_value = get_optimal_value(capacity, valWeight);
-
-  // cout << endl;
 
   // for (int i = 0; i < valWeight.size(); i++)
   // {
